@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BookController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +20,10 @@ Route::get('/me', [AuthController::class, 'me']);
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+//Routes API
+Route::get('books','BookController@index');
+Route::post('books','BookController@store');
+Route::get('books/{id}','BookController@show');
+Route::put('books/{id}','BookController@update');
+Route::delete('books/{id}','BookController@destroy');
